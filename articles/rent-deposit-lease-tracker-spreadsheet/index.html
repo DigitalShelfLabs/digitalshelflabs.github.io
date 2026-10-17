@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to Track Rent, Deposits and Lease Ends for 1–10 Rental Units in One Spreadsheet | DigitalShelf Labs</title>
+<meta name="description" content="A free, do-it-yourself setup for small landlords: five tabs, a few formulas, and one weekly habit.">
+<link rel="canonical" href="https://digitalshelflabs.github.io/articles/rent-deposit-lease-tracker-spreadsheet/">
+<meta property="og:type" content="article"><meta property="og:title" content="How to Track Rent, Deposits and Lease Ends for 1–10 Rental Units in One Spreadsheet | DigitalShelf Labs"><meta property="og:description" content="A free, do-it-yourself setup for small landlords: five tabs, a few formulas, and one weekly habit."><meta property="og:url" content="https://digitalshelflabs.github.io/articles/rent-deposit-lease-tracker-spreadsheet/"><meta property="og:site_name" content="DigitalShelf Labs"><meta property="og:image" content="https://digitalshelflabs.github.io/assets/img/products/landlord-tracker-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="alternate" type="application/rss+xml" title="DigitalShelf Labs pins" href="/feed.xml">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to Track Rent, Deposits and Lease Ends for 1\u201310 Rental Units in One Spreadsheet", "description": "A free, do-it-yourself setup for small landlords: five tabs, a few formulas, and one weekly habit.", "datePublished": "2026-10-16", "author": {"@type": "Organization", "name": "DigitalShelf Labs"}, "publisher": {"@type": "Organization", "name": "DigitalShelf Labs"}, "mainEntityOfPage": "https://digitalshelflabs.github.io/articles/rent-deposit-lease-tracker-spreadsheet/"}</script>
+</head><body>
+<header class="site"><div class="wrap"><a class="brand" href="/"><svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="#1f2933" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8v48M54 8v48M10 30h44M10 50h44"/><rect x="14" y="21" width="12" height="9"/><rect x="29" y="12" width="6" height="18"/><path d="M37 13l5-2 7 17-5 2z"/><path d="M27 34l5 2-6 14-5-2z"/><rect x="33" y="35" width="6" height="15"/><rect x="40" y="43" width="11" height="7"/></svg><span>DigitalShelf Labs</span></a>
+<nav><a href="/products/">Products</a><a href="/articles/">Articles</a><a href="https://digitalshelflabs.gumroad.com">Shop</a></nav></div></header>
+<main><div class="wrap">
+<div class="narrow"><p class="crumbs"><a href="/">Home</a> › <a href="/articles/">Articles</a></p><article class="post"><h1>How to Track Rent, Deposits and Lease Ends for 1–10 Rental Units in One Spreadsheet</h1><p class="lead">A free, do-it-yourself setup for small landlords: five tabs, a few formulas, and one weekly habit.</p><p class="meta">DigitalShelf Labs · 16 October 2026</p>
+<p>If you rent out one to ten homes, you probably don't need property management software. But you do need to answer a few questions quickly: Who has paid this month? Who paid only part? Whose lease ends soon? How much deposit am I holding, and how much do I owe back? What did each unit actually earn this year?</p>
+<p>When the answers are spread across a bank app, an email thread and a notebook, every one of those questions takes twenty minutes. A single spreadsheet fixes most of that. Here's a simple way to build one yourself, in any spreadsheet app, in an afternoon.</p>
+<p><em>Quick note: this is about record-keeping, not legal or tax advice. Rules on rent, late fees, deposits and notice periods differ by country and region, so check your local rules or a qualified professional.</em></p>
+<h2>The core idea: one row per event, never one row per month</h2>
+<p>The most common mistake in a homemade rent tracker is a grid with tenants down the side and months across the top, where you type "paid" in each cell. It looks tidy until someone pays half, then the rest ten days later, and you have nowhere to put it.</p>
+<p>Instead, keep <strong>lists</strong>. Each payment, expense, deposit change or repair is a new row. Summaries are built from those lists with formulas. Lists are easy to add to and hard to break.</p>
+<h2>Tab 1: Units and leases</h2>
+<p>One row per tenancy (not per tenant, since a unit will have several tenancies over the years):</p>
+<ul>
+<li>Unit ID (U01, U02…)</li>
+<li>Tenant name</li>
+<li>Lease start, lease end</li>
+<li>Monthly rent</li>
+<li>Rent due day (for example, the 1st)</li>
+<li>Deposit amount</li>
+<li>Notice period in days</li>
+</ul>
+<p>This is the only place you type rent amounts and dates. Every other tab looks them up.</p>
+<h2>Tab 2: Rent ledger</h2>
+<p>One row per payment that arrives:</p>
+<ul>
+<li>Date paid</li>
+<li>Unit ID</li>
+<li>Amount</li>
+<li>For which period (for example, 2026-10)</li>
+<li>Method and a note</li>
+</ul>
+<p>If a tenant pays in two parts, that's two rows. Then add a small summary area with one row per unit for the current month:</p>
+<ul>
+<li><strong>Expected</strong> = the rent from Tab 1</li>
+<li><strong>Paid</strong> = <code>SUMIFS(Amount, Unit, U01, Period, 2026-10)</code></li>
+<li><strong>Balance</strong> = Expected − Paid</li>
+</ul>
+<p>Add conditional formatting: green when the balance is zero, amber when something has been paid but not all, red when nothing has been paid after the due day plus any grace days you allow. That colour column is the thing you'll look at most.</p>
+<p>For a running balance per tenant over the whole tenancy, sum everything expected since the lease start and subtract everything paid. Months of small shortfalls become visible instead of being forgotten.</p>
+<h2>Tab 3: Deposits</h2>
+<p>Deposits are where small landlords most often lose track, because the money comes in once and leaves years later. One row per movement:</p>
+<ul>
+<li>Date, unit, tenant</li>
+<li>Type: received, deduction, refund</li>
+<li>Amount and a short reason (for deductions, note the evidence, such as photos or invoices, and where it's saved)</li>
+</ul>
+<p>Per tenant: <strong>Held = received − deductions − refunds</strong>. When a tenancy ends, that number is what you still owe back, or need to explain. Many places have specific rules on how deposits are held, how quickly they must be returned and what can be deducted, so check yours.</p>
+<h2>Tab 4: Lease ends</h2>
+<p>You don't need a separate list here; build it from Tab 1:</p>
+<ul>
+<li><strong>Days to end</strong> = lease end − <code>TODAY()</code></li>
+<li><strong>Window</strong> = "Next 30 days", "31–60", "61–90" or "Later", using nested IFs</li>
+<li><strong>Notice due</strong> = flag when days to end is less than or equal to the notice period</li>
+</ul>
+<p>Sort or filter by days to end, and you'll see renewals and notices coming months ahead instead of the week before. The flag is only a date reminder; what notice you must give, and how, depends on your lease and local law.</p>
+<h2>Tab 5: Expenses and repairs</h2>
+<p>Expenses: date, unit (or "Shared" for costs across all units), category, amount, payee and where the receipt is saved. Keep categories generic (repairs, insurance, utilities, management, supplies, other) and decide with your accountant how they map to your local tax return.</p>
+<p>Repairs: date reported, unit, issue, contractor, cost, status and a follow-up date. Flag rows where the follow-up date has passed and the status isn't "Done". Add a few recurring jobs, like heating service or smoke alarm checks, with a next-due date.</p>
+<h2>The summary: one screen, five numbers</h2>
+<p>On a front tab, pull together:</p>
+<ol>
+<li>Rent collected this month vs expected</li>
+<li>Total owed by tenants right now</li>
+<li>Deposits held in total</li>
+<li>Leases ending in the next 90 days</li>
+<li>Open repairs, and how many are overdue</li>
+</ol>
+<p>Plus a simple annual view: income minus expenses per unit. That's the number that tells you whether a unit is worth keeping.</p>
+<h2>The habit that makes it work</h2>
+<p>A tracker is only as good as its last update. Once a week, spend about fifteen minutes:</p>
+<ul>
+<li>Type in any rent received since last time</li>
+<li>Add receipts for anything you paid</li>
+<li>Glance at the red cells and the lease-end list</li>
+</ul>
+<p>Monthly, check the summary against your bank statement. If the numbers match, you can trust the sheet.</p>
+<h2>Tips so it doesn't break</h2>
+<ul>
+<li><strong>Colour your input cells</strong> (for example, yellow) and never type in formula cells. Protect formula columns if your app allows it.</li>
+<li><strong>Use one currency per file.</strong></li>
+<li><strong>Use dropdowns</strong> for unit IDs and categories so typos don't split your totals.</li>
+<li><strong>Start a new copy each year</strong>, carrying over open balances and deposits.</li>
+<li><strong>Protect tenant data.</strong> Names, phone numbers and emails are personal data. Keep the file private and follow your local data-protection rules.</li>
+</ul>
+<h2>If you'd rather not build it</h2>
+<p>Everything above is free to build, and for a single unit a simpler version is plenty. If you have several units and would rather start from a finished file, we made one: the <strong>Landlord Tracker</strong>, an .xlsx spreadsheet template with these tabs already built (rent matching with partial and late payments, deposits, lease ends in 30/60/90 days, repairs, recurring maintenance, expenses and an annual summary), plus a sample file filled with example data. It works in any currency for 1–10 units.</p>
+<p>You can find it here: <a href="/products/landlord-tracker/">Landlord Tracker</a></p>
+<p>Either way, the goal is the same: one place where you can see who owes what, which leases are ending and what each unit earns.</p>
+<p><em>This article is for general information only and isn't legal, tax or accounting advice. Check your local rules.</em></p></article><p><a class="btn" href="/products/landlord-tracker/">See the Landlord Tracker</a></p></div>
+</div></main>
+<footer class="site"><div class="wrap"><p>© 2026 DigitalShelf Labs · Templates, planners and guides, sold through Gumroad.</p>
+<p><a href="/products/">Products</a><a href="/articles/">Articles</a><a href="/affiliates/">Affiliates</a><a href="/privacy/">Privacy</a><a href="mailto:digitalshelflabs@proton.me">digitalshelflabs@proton.me</a></p></div></footer>
+</body></html>
